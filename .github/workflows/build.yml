@@ -13,15 +13,15 @@ on:
         default: 'Update package'
 
 jobs:
-  build:
-    name: build
+  build-linux:
+    name: build-linux-${{ matrix.target_arch }}
     runs-on: ubuntu-latest
     permissions:
       id-token: write
       attestations: write
     strategy:
       matrix:
-        target_arch: [x86_64, x86, arm64-v8a, armeabi-v7a]
+        target_arch: [x86_64, x86]
       fail-fast: false
     steps:
       - name: Checkout
@@ -29,23 +29,48 @@ jobs:
         with:
           submodules: 'true'
 
-      - uses: nttld/setup-ndk@v1
-        id: setup-ndk
-        with:
-          ndk-version: r23c
-          add-to-path: false
-      - run: ./build.sh ${{ matrix.target_arch }}
-        env:
-          NDK_TOOLCHAIN: ${{ steps.setup-ndk.outputs.ndk-path }}/toolchains/llvm/prebuilt/linux-x86_64
+      - name: Build aapt2 for Linux
+        run: ./build.sh ${{ matrix.target_arch }}
 
       - name: Attest build provenance
         uses: actions/attest-build-provenance@v1
         with:
-          subject-name: dist-${{ matrix.target_arch }}
+          subject-name: dist-linux-${{ matrix.target_arch }}
           subject-path: dist
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: dist-${{ matrix.target_arch }}
+          name: dist-linux-${{ matrix.target_arch }}
+          path: dist
+
+  build-windows:
+    name: build-windows-${{ matrix.target_arch }}
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      attestations: write
+    strategy:
+      matrix:
+        target_arch: [x86_64, x86]
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+
+      - name: Build aapt2 for Windows
+        run: ./build_windows.sh ${{ matrix.target_arch }}
+
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-name: dist-windows-${{ matrix.target_arch }}
+          subject-path: dist
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-windows-${{ matrix.target_arch }}
           path: dist
