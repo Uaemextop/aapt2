@@ -4,6 +4,13 @@
 
 This repository contains a workflow to build the aapt2 binaries for Linux and Windows (for use with apktool).
 
+## Android version
+
+Built from **Android 16** (API level 36, codename Baklava) AOSP sources, branch `android-16.0.0_r2`.
+
+- **TOOLS_VERSION**: 36.0.0
+- **AOSP tag**: `android-16.0.0_r2`
+
 ## Build targets
 
 | Platform | Architecture | Output binary |
@@ -43,3 +50,7 @@ This repository contains a workflow to build the aapt2 binaries for Linux and Wi
 - NASM assembler
 - For 32-bit Linux builds: gcc-multilib, g++-multilib
 - For Windows builds: mingw-w64
+
+## CI Runner
+
+The CI workflow runs on a self-hosted runner labeled `aapt2` (16 vCPU, 600GB).
