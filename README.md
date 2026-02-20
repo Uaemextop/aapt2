@@ -53,4 +53,4 @@ Built from **Android 16** (API level 36, codename Baklava) AOSP sources, branch 
 
 ## CI Runner
 
-The CI workflow runs on a self-hosted runner labeled `aapt2` (16 vCPU, 600GB).
+The CI workflow runs on a custom self-hosted GitHub Actions runner labeled `aapt2` (16 vCPU, 600GB disk).
