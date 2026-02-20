@@ -58,7 +58,7 @@ build_directory="build"
 aapt_binary_path="$root/$build_directory/cmake/aapt2"
 
 # Switch to cmake build directory.
-[[ -d dir ]] || mkdir -p $build_directory && cd $build_directory || exit 1
+mkdir -p "$build_directory" && cd "$build_directory" || exit 1
 
 # Set compiler flags for architecture.
 if [[ "$architecture" == "x86" ]]; then
