@@ -40,6 +40,15 @@ cd "src/selinux" || exit 1
 git apply "$root/patches/selinux.patch" --whitespace=fix
 cd "$root" || exit 1
 
+# Clone abseil-cpp into the location expected by protobuf's cmake build.
+# The AOSP protobuf mirror does not carry the third_party/abseil-cpp submodule,
+# but upstream protobuf 25.8 cmake requires it.
+if [ ! -d "$root/src/protobuf/third_party/abseil-cpp" ]; then
+    git clone --depth 1 -b lts_2023_08_02 \
+        https://github.com/abseil/abseil-cpp.git \
+        "$root/src/protobuf/third_party/abseil-cpp" || exit 1
+fi
+
 # Build protobuf compiler (protoc) from the submodule using CMake.
 mkdir -p "src/protobuf/build-protoc" && cd "src/protobuf/build-protoc" || exit 1
 cmake -DCMAKE_BUILD_TYPE=Release \
