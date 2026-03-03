@@ -44,7 +44,6 @@ add_library(libselinux STATIC
     ${SRC}/selinux/libselinux/src/regex.c
     ${SRC}/selinux/libselinux/src/selinux_config.c
     ${SRC}/selinux/libselinux/src/seusers.c
-    ${SRC}/selinux/libselinux/src/android/android_platform.c
     )
 
 target_compile_definitions(libselinux PRIVATE

@@ -54,6 +54,19 @@ index 380c5f211..8bd2a41b0 100644
  
  package aapt.pb.internal;
  
+diff --git a/tools/aapt2/ApkInfo.proto b/tools/aapt2/ApkInfo.proto
+index b5ff71fa5..0c2d2d0a0 100644
+--- a/tools/aapt2/ApkInfo.proto
++++ b/tools/aapt2/ApkInfo.proto
+@@ -16,7 +16,7 @@
+ 
+ syntax = "proto3";
+ 
+-import "frameworks/base/tools/aapt2/Resources.proto";
++import "Resources.proto";
+ 
+ package aapt.pb;
+ 
 diff --git a/tools/aapt2/cmd/Link.cpp b/tools/aapt2/cmd/Link.cpp
 index 5219b0568..7edb1b9a0 100644
 --- a/tools/aapt2/cmd/Link.cpp

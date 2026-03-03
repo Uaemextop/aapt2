@@ -62,6 +62,7 @@ set(INCLUDES
 
 set(TOOL_SOURCE
   ${SRC}/base/tools/aapt2/Main.cpp
+  ${SRC}/base/tools/aapt2/cmd/ApkInfo.cpp
   ${SRC}/base/tools/aapt2/cmd/Command.cpp
   ${SRC}/base/tools/aapt2/cmd/Compile.cpp
   ${SRC}/base/tools/aapt2/cmd/Convert.cpp
@@ -74,10 +75,6 @@ set(TOOL_SOURCE
 add_library(libaapt2 STATIC
   ${SRC}/base/tools/aapt2/compile/IdAssigner.cpp
   ${SRC}/base/tools/aapt2/compile/InlineXmlFormatParser.cpp
-  ${SRC}/base/tools/aapt2/compile/NinePatch.cpp
-  ${SRC}/base/tools/aapt2/compile/Png.cpp
-  ${SRC}/base/tools/aapt2/compile/PngChunkFilter.cpp
-  ${SRC}/base/tools/aapt2/compile/PngCrunch.cpp
   ${SRC}/base/tools/aapt2/compile/PseudolocaleGenerator.cpp
   ${SRC}/base/tools/aapt2/compile/Pseudolocalizer.cpp
   ${SRC}/base/tools/aapt2/compile/XmlIdCollector.cpp
