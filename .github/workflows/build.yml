@@ -26,13 +26,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          submodules: 'true'
 
-      - name: Sync submodules to Android 16 branch
+      - name: Sync submodules to Android 16 tag
         run: |
           git submodule sync --recursive
-          git submodule update --init --remote --depth 1
+          git submodule update --init --depth 1
 
       - name: Build aapt2 for Linux
         run: ./build.sh ${{ matrix.target_arch }}
@@ -62,13 +60,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          submodules: 'true'
 
-      - name: Sync submodules to Android 16 branch
+      - name: Sync submodules to Android 16 tag
         run: |
           git submodule sync --recursive
-          git submodule update --init --remote --depth 1
+          git submodule update --init --depth 1
 
       - name: Build aapt2 for Windows
         run: ./build_windows.sh ${{ matrix.target_arch }}
