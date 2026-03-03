@@ -16,6 +16,12 @@ endif()
 # set global cflags and cxxflags
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fdiagnostics-color=always -fPIC -Wno-attributes -std=gnu11")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fdiagnostics-color=always -fPIC -Wno-attributes -std=gnu++2a")
+
+# BoringSSL x86 assembly requires SSE2
+if(TARGET_ARCH STREQUAL "x86")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse2")
+endif()
 # static link
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static")
 

@@ -3,7 +3,7 @@ new file mode 100644
 index 0000000..50758c9
 --- /dev/null
 +++ b/CMakeLists.txt
-@@ -0,0 +1,19 @@
+@@ -0,0 +1,24 @@
 +cmake_minimum_required(VERSION 3.5)
 +project(expat)
 +
@@ -23,3 +23,8 @@ index 0000000..50758c9
 +target_compile_definitions(expat PRIVATE
 +    HAVE_EXPAT_CONFIG_H
 +)
++
++# Provide a high-quality entropy source for xmlparse.c
++if(NOT WIN32)
++    target_compile_definitions(expat PRIVATE XML_DEV_URANDOM)
++endif()
