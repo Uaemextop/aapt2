@@ -44,7 +44,7 @@ add_subdirectory(src/fmtlib EXCLUDE_FROM_ALL)
 add_subdirectory(src/pcre EXCLUDE_FROM_ALL)
 add_subdirectory(src/expat EXCLUDE_FROM_ALL)
 add_subdirectory(src/zopfli EXCLUDE_FROM_ALL)
-add_subdirectory(src/protobuf/cmake EXCLUDE_FROM_ALL)
+add_subdirectory(src/protobuf EXCLUDE_FROM_ALL)
 
 # building sdk-tools
 add_subdirectory(cmake)
