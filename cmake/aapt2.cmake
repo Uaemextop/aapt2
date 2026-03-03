@@ -180,6 +180,7 @@ add_library(libaapt2 STATIC
   ssl
   pcre2-8
   fmt
-  c++_static
+  stdc++
   z
-  dl)
+  dl
+  pthread)

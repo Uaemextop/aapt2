@@ -2,55 +2,69 @@
 	shallow = true
 	path = src/expat
 	url = https://android.googlesource.com/platform/external/expat.git
+	branch = android-16.0.0_r2
 [submodule "src/fmtlib"]
 	shallow = true
 	path = src/fmtlib
 	url = https://android.googlesource.com/platform/external/fmtlib.git
+	branch = android-16.0.0_r2
 [submodule "src/boringssl"]
 	shallow = true
 	path = src/boringssl
-	url = https://boringssl.googlesource.com/boringssl.git
+	url = https://android.googlesource.com/platform/external/boringssl
+	branch = android-16.0.0_r2
 [submodule "src/incremental_delivery"]
 	shallow = true
 	path = src/incremental_delivery
 	url = https://android.googlesource.com/platform/system/incremental_delivery
+	branch = android-16.0.0_r2
 [submodule "src/libbase"]
 	shallow = true
 	path = src/libbase
 	url = https://android.googlesource.com/platform/system/libbase
+	branch = android-16.0.0_r2
 [submodule "src/libpng"]
 	shallow = true
 	path = src/libpng
 	url = https://android.googlesource.com/platform/external/libpng.git
+	branch = android-16.0.0_r2
 [submodule "src/pcre"]
 	shallow = true
 	path = src/pcre
 	url = https://android.googlesource.com/platform/external/pcre.git
+	branch = android-16.0.0_r2
 [submodule "src/zopfli"]
 	shallow = true
 	path = src/zopfli
 	url = https://android.googlesource.com/platform/external/zopfli
+	branch = android-16.0.0_r2
 [submodule "src/protobuf"]
 	shallow = true
 	path = src/protobuf
 	url = https://android.googlesource.com/platform/external/protobuf
+	branch = android-16.0.0_r2
 [submodule "src/logging"]
 	shallow = true
 	path = src/logging
 	url = https://android.googlesource.com/platform/system/logging.git
+	branch = android-16.0.0_r2
 [submodule "src/selinux"]
 	shallow = true
 	path = src/selinux
 	url = https://android.googlesource.com/platform/external/selinux.git
+	branch = android-16.0.0_r2
 [submodule "src/core"]
 	shallow = true
 	path = src/core
 	url = https://android.googlesource.com/platform/system/core.git
+	branch = android-16.0.0_r2
 [submodule "src/base"]
 	shallow = true
 	path = src/base
 	url = https://android.googlesource.com/platform/frameworks/base
+	branch = android-16.0.0_r2
 [submodule "src/libziparchive"]
 	shallow = true
 	path = src/libziparchive
 	url = https://android.googlesource.com/platform/system/libziparchive
+	branch = android-16.0.0_r2

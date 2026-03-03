@@ -1,23 +1,27 @@
 cmake_minimum_required(VERSION 3.14.2)
 project(sdk-tools)
 
-if(ANDROID_ABI STREQUAL "arm64-v8a" OR ANDROID_ABI STREQUAL "armeabi-v7a")
-    enable_language(ASM)
-elseif(ANDROID_ABI STREQUAL "x86_64" OR ANDROID_ABI STREQUAL "x86")
+if(NOT DEFINED TARGET_ARCH)
+    set(TARGET_ARCH "x86_64")
+endif()
+
+if(TARGET_ARCH STREQUAL "x86_64" OR TARGET_ARCH STREQUAL "x86")
     enable_language(ASM_NASM)
+elseif(TARGET_ARCH STREQUAL "aarch64" OR TARGET_ARCH STREQUAL "arm")
+    enable_language(ASM)
 else()
-    message(FATAL_ERROR "Unsupported architecture: ${ANDROID_ABI}")
+    message(FATAL_ERROR "Unsupported architecture: ${TARGET_ARCH}")
 endif()
 
 # set global cflags and cxxflags
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fcolor-diagnostics -fPIC -Wno-attributes -std=gnu11")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fcolor-diagnostics -fPIC -Wno-attributes -std=gnu++2a")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fdiagnostics-color=always -fPIC -Wno-attributes -std=gnu11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fdiagnostics-color=always -fPIC -Wno-attributes -std=gnu++2a")
 # static link
-set(CMAKE_EXE_LINKER_FLAGS "-static")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static")
 
 # platform tools version
 # see the patches/other/platform_tools_version.h
-set(TOOLS_VERSION 33.0.1)
+set(TOOLS_VERSION 36.0.0)
 set(SRC ${PROJECT_SOURCE_DIR}/src)
 
 # 64-bit off_t for lseek.
