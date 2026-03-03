@@ -1,0 +1,25 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+new file mode 100644
+index 0000000..50758c9
+--- /dev/null
++++ b/CMakeLists.txt
+@@ -0,0 +1,19 @@
++cmake_minimum_required(VERSION 3.5)
++project(expat)
++
++add_library(expat STATIC
++    lib/xmlparse.c
++    lib/xmlrole.c
++    lib/xmltok.c
++)
++
++target_include_directories(expat
++    PUBLIC
++        ${CMAKE_CURRENT_SOURCE_DIR}/lib
++    PRIVATE
++        ${CMAKE_CURRENT_SOURCE_DIR}
++)
++
++target_compile_definitions(expat PRIVATE
++    HAVE_EXPAT_CONFIG_H
++)
