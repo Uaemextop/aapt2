@@ -20,9 +20,10 @@ if [[ "$architecture" != "x86_64" && "$architecture" != "x86" ]]; then
 fi
 
 # Prerequisites.
-sudo apt install \
+sudo apt-get update -y
+sudo apt-get install \
 ninja-build \
-autogen \
+automake \
 autoconf \
 libtool \
 build-essential \
@@ -31,10 +32,10 @@ nasm \
 
 # Install mingw-w64 cross-compiler.
 if [[ "$architecture" == "x86_64" ]]; then
-    sudo apt install gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 -y || exit 1
+    sudo apt-get install gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 -y || exit 1
     cross_prefix="x86_64-w64-mingw32"
 else
-    sudo apt install gcc-mingw-w64-i686 g++-mingw-w64-i686 -y || exit 1
+    sudo apt-get install gcc-mingw-w64-i686 g++-mingw-w64-i686 -y || exit 1
     cross_prefix="i686-w64-mingw32"
 fi
 

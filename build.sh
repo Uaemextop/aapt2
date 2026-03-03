@@ -20,9 +20,10 @@ if [[ "$architecture" != "x86_64" && "$architecture" != "x86" ]]; then
 fi
 
 # Prerequisites.
-sudo apt install \
+sudo apt-get update -y
+sudo apt-get install \
 ninja-build \
-autogen \
+automake \
 autoconf \
 libtool \
 build-essential \
@@ -31,7 +32,7 @@ nasm \
 
 # Install multilib for 32-bit builds.
 if [[ "$architecture" == "x86" ]]; then
-    sudo apt install gcc-multilib g++-multilib -y || exit 1
+    sudo apt-get install gcc-multilib g++-multilib -y || exit 1
 fi
 
 root="$(pwd)"
