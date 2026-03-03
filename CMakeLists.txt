@@ -40,6 +40,8 @@ endif()
 
 # thrid-party libraries
 add_subdirectory(src/boringssl EXCLUDE_FROM_ALL)
+# BoringSSL sets CXX_STANDARD 14 on its targets; override to C++17 (required by span.h)
+set_target_properties(crypto ssl PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
 add_subdirectory(src/fmtlib EXCLUDE_FROM_ALL)
 add_subdirectory(src/pcre EXCLUDE_FROM_ALL)
 add_subdirectory(src/expat EXCLUDE_FROM_ALL)
