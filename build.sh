@@ -21,23 +21,37 @@ fi
 
 root="$(pwd)"
 
-# Install protobuf compiler.
+# Apply essential patches (skip Android-specific: boringssl.patch, libpng.patch).
+# Patches are applied within each submodule directory.
+cd "src/base" || exit 1
+git apply "$root/patches/aapt2.patch" --whitespace=fix
+git apply "$root/patches/androidfw.patch" --whitespace=fix
+cd "$root" || exit 1
+
+cd "src/incremental_delivery" || exit 1
+git apply "$root/patches/incremental_delivery.patch" --whitespace=fix
+cd "$root" || exit 1
+
 cd "src/protobuf" || exit 1
-./autogen.sh
-./configure
-make -j"$(nproc)"
-sudo make install
+git apply "$root/patches/protobuf.patch" --whitespace=fix
+cd "$root" || exit 1
+
+cd "src/selinux" || exit 1
+git apply "$root/patches/selinux.patch" --whitespace=fix
+cd "$root" || exit 1
+
+# Build protobuf compiler (protoc) from the submodule using CMake.
+mkdir -p "src/protobuf/build-protoc" && cd "src/protobuf/build-protoc" || exit 1
+cmake -DCMAKE_BUILD_TYPE=Release \
+  -Dprotobuf_BUILD_TESTS=OFF \
+  -Dprotobuf_BUILD_EXAMPLES=OFF \
+  .. || exit 1
+make -j"$(nproc)" protoc || exit 1
+sudo install protoc /usr/local/bin/protoc
 sudo ldconfig
 
 # Go back.
 cd "$root" || exit 1
-
-# Apply essential patches (skip Android-specific: boringssl.patch, libpng.patch).
-git apply patches/aapt2.patch --whitespace=fix
-git apply patches/androidfw.patch --whitespace=fix
-git apply patches/incremental_delivery.patch --whitespace=fix
-git apply patches/protobuf.patch --whitespace=fix
-git apply patches/selinux.patch --whitespace=fix
 
 build_directory="build"
 aapt_binary_path="$root/$build_directory/cmake/aapt2"
