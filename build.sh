@@ -19,22 +19,6 @@ if [[ "$architecture" != "x86_64" && "$architecture" != "x86" ]]; then
     exit 1
 fi
 
-# Prerequisites.
-sudo apt-get update -y
-sudo apt-get install \
-ninja-build \
-automake \
-autoconf \
-libtool \
-build-essential \
-nasm \
--y || exit 1
-
-# Install multilib for 32-bit builds.
-if [[ "$architecture" == "x86" ]]; then
-    sudo apt-get install gcc-multilib g++-multilib -y || exit 1
-fi
-
 root="$(pwd)"
 
 # Install protobuf compiler.
