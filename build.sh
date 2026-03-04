@@ -40,6 +40,10 @@ cd "src/selinux" || exit 1
 git apply "$root/patches/selinux.patch" --whitespace=fix
 cd "$root" || exit 1
 
+cd "src/core" || exit 1
+git apply "$root/patches/core.patch" --whitespace=fix
+cd "$root" || exit 1
+
 cd "src/expat" || exit 1
 git apply "$root/patches/expat.patch" --whitespace=fix
 cd "$root" || exit 1

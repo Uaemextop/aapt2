@@ -1,0 +1,12 @@
+diff --git a/libcutils/include/cutils/trace.h b/libcutils/include/cutils/trace.h
+--- a/libcutils/include/cutils/trace.h
++++ b/libcutils/include/cutils/trace.h
+@@ -19,6 +19,9 @@
+ #include <inttypes.h>
+ #include <stdatomic.h>
++#ifdef __cplusplus
++#include <atomic>
++#endif
+ #include <stdbool.h>
+ #include <stdint.h>
+ #include <stdio.h>
