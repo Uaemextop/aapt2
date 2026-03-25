@@ -178,6 +178,10 @@ add_library(libaapt2 STATIC
   pcre2-8
   fmt
   stdc++
-  z
-  dl
-  pthread)
+  z)
+
+if(WIN32)
+  target_link_libraries(aapt2 ws2_32 shlwapi)
+else()
+  target_link_libraries(aapt2 dl pthread)
+endif()

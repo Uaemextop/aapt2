@@ -68,3 +68,8 @@
 	path = src/libziparchive
 	url = https://android.googlesource.com/platform/system/libziparchive
 	branch = android-16.0.0_r4
+[submodule "src/native"]
+	shallow = true
+	path = src/native
+	url = https://android.googlesource.com/platform/frameworks/native
+	branch = android-16.0.0_r4
