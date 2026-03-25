@@ -93,7 +93,8 @@ jobs:
             build-essential \
             cmake \
             nasm \
-            zlib1g-dev
+            zlib1g-dev \
+            libz-mingw-w64-dev
           if [[ "${{ matrix.target_arch }}" == "x86_64" ]]; then
             sudo apt-get install -y gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64
           else

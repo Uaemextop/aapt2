@@ -49,8 +49,7 @@ target_include_directories(libandroidfw PUBLIC
     ${SRC}/core/libsystem/include
     ${SRC}/core/libutils/include
     ${SRC}/libbase/include
-    ${SRC}/native/include
-    ${SRC}/native/libs/binder/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs
     ${SRC}/libziparchive/include
     ${SRC}/incremental_delivery/incfs/util/include
     ${SRC}/incremental_delivery/incfs/kernel-headers
