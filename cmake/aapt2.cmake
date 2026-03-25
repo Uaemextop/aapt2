@@ -56,7 +56,6 @@ set(INCLUDES
     ${SRC}/core/libutils/include
     ${SRC}/boringssl/third_party/googletest/include
     ${SRC}/libziparchive/include 
-    ${SRC}/libbuildversion/include
     ${SRC}/incremental_delivery/incfs/util/include 
     ${SRC}/incremental_delivery/incfs/kernel-headers)
 

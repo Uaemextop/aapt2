@@ -17,12 +17,16 @@ diff --git a/libpackagelistparser/packagelistparser.cpp b/libpackagelistparser/p
 index 5517b68..39785ab 100644
 --- a/libpackagelistparser/packagelistparser.cpp
 +++ b/libpackagelistparser/packagelistparser.cpp
-@@ -23,7 +23,7 @@
+@@ -23,7 +23,11 @@
  #include <stdio.h>
  #include <stdlib.h>
  #include <string.h>
 -#include <sys/limits.h>
 +#include <limits.h>
++
++#ifndef GID_MAX
++#define GID_MAX 65534
++#endif
  
  #include <memory>
  
