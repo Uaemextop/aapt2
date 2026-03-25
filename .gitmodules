@@ -32,7 +32,7 @@
 	shallow = true
 	path = src/pcre
 	url = https://android.googlesource.com/platform/external/pcre.git
-	branch = android-16.0.0_r4
+	branch = android-security-16.0.0_r4
 [submodule "src/zopfli"]
 	shallow = true
 	path = src/zopfli
