@@ -15,7 +15,7 @@ on:
 jobs:
   build-linux:
     name: build-linux-${{ matrix.target_arch }}
-    runs-on: [mp]
+    runs-on: [ubuntu-latest]
     permissions:
       id-token: write
       attestations: write
@@ -65,7 +65,7 @@ jobs:
 
   build-windows:
     name: build-windows-${{ matrix.target_arch }}
-    runs-on: [mp]
+    runs-on: [ubuntu-latest]
     permissions:
       id-token: write
       attestations: write
