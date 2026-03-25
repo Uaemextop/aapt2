@@ -73,3 +73,8 @@
 	path = src/native
 	url = https://android.googlesource.com/platform/frameworks/native
 	branch = android-16.0.0_r4
+[submodule "src/bionic"]
+	shallow = true
+	path = src/bionic
+	url = https://android.googlesource.com/platform/bionic
+	branch = android-16.0.0_r4

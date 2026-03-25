@@ -5,4 +5,5 @@ ${SRC}/core/libpackagelistparser/packagelistparser.cpp
 target_include_directories(libpackagelistparser PRIVATE
 ${SRC}/core/libpackagelistparser/include
 ${SRC}/logging/liblog/include
+${SRC}/bionic/libc/include
 )
