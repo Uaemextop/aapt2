@@ -13,6 +13,19 @@ index 7f57637..4bc2f01 100644
  #include <stdbool.h>
  #include <stdint.h>
  #include <stdio.h>
+diff --git a/libpackagelistparser/packagelistparser.cpp b/libpackagelistparser/packagelistparser.cpp
+index 5517b68..39785ab 100644
+--- a/libpackagelistparser/packagelistparser.cpp
++++ b/libpackagelistparser/packagelistparser.cpp
+@@ -23,7 +23,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+-#include <sys/limits.h>
++#include <limits.h>
+ 
+ #include <memory>
+ 
 diff --git a/libutils/Threads.cpp b/libutils/Threads.cpp
 index 111d46a..f50d571 100644
 --- a/libutils/Threads.cpp
