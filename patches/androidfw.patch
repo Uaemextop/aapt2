@@ -1,3 +1,15 @@
+diff --git a/libs/androidfw/ApkParsing.cpp b/libs/androidfw/ApkParsing.cpp
+index 1234567..abcdefg 100644
+--- a/libs/androidfw/ApkParsing.cpp
++++ b/libs/androidfw/ApkParsing.cpp
+@@ -17,6 +17,7 @@
+ #include "androidfw/ApkParsing.h"
+ #include <algorithm>
+ #include <array>
++#include <cstring>
+ #include <stdlib.h>
+ #include <string_view>
+ #include <sys/types.h>
 diff --git a/libs/androidfw/ResourceTypes.cpp b/libs/androidfw/ResourceTypes.cpp
 index f12966341..6cc1a86d4 100644
 --- a/libs/androidfw/ResourceTypes.cpp
