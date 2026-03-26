@@ -1,3 +1,30 @@
+diff --git a/incfs/util/include/util/map_ptr.h b/incfs/util/include/util/map_ptr.h
+index 9a6aebf..ffbd746 100644
+--- a/incfs/util/include/util/map_ptr.h
++++ b/incfs/util/include/util/map_ptr.h
+@@ -192,6 +192,22 @@ public:
+             return temp;
+         }
+ 
++        const const_iterator& operator--() {
++            safe_ptr_ = safe_ptr_ + (-1);
++            return *this;
++        }
++
++        const const_iterator operator--(int) {
++            const_iterator temp(*this);
++            safe_ptr_ = safe_ptr_ + (-1);
++            return temp;
++        }
++
++        const_iterator& operator-=(int n) {
++            safe_ptr_ = safe_ptr_ + (-n);
++            return *this;
++        }
++
+     private:
+         explicit const_iterator(const map_ptr<T>& ptr) : safe_ptr_(ptr) {}
+         map_ptr<T> safe_ptr_;
 diff --git a/sysprop/IncrementalProperties.sysprop.cpp b/sysprop/IncrementalProperties.sysprop.cpp
 new file mode 100644
 index 0000000..6d479e4
