@@ -96,15 +96,17 @@ jobs:
             sudo apt-get install -y lib32stdc++6
           fi
 
-      - name: Install cmake from Android SDK (sdkmanager)
+      - name: Install cmake and SDK 36 from Android SDK (sdkmanager)
         run: |
           SDK_ROOT="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}}"
           SDKMANAGER="${SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager"
           yes | $SDKMANAGER --licenses > /dev/null 2>&1 || true
-          $SDKMANAGER "cmake;3.22.1"
+          $SDKMANAGER "cmake;3.22.1" "platforms;android-36" "sources;android-36"
           SDK_CMAKE="${SDK_ROOT}/cmake/3.22.1/bin"
           echo "${SDK_CMAKE}" >> $GITHUB_PATH
           echo "CMAKE_BIN=${SDK_CMAKE}/cmake" >> $GITHUB_ENV
+          echo "ANDROID_SDK_ROOT=${SDK_ROOT}" >> $GITHUB_ENV
+          echo "${SDK_ROOT}/platform-tools" >> $GITHUB_PATH
 
       - name: Install Android NDK (r27 - Android 16 / API 36)
         run: |
@@ -218,15 +220,17 @@ jobs:
             sudo apt-get install -y gcc-mingw-w64-i686 g++-mingw-w64-i686
           fi
 
-      - name: Install cmake from Android SDK (sdkmanager)
+      - name: Install cmake and SDK 36 from Android SDK (sdkmanager)
         run: |
           SDK_ROOT="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}}"
           SDKMANAGER="${SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager"
           yes | $SDKMANAGER --licenses > /dev/null 2>&1 || true
-          $SDKMANAGER "cmake;3.22.1"
+          $SDKMANAGER "cmake;3.22.1" "platforms;android-36" "sources;android-36"
           SDK_CMAKE="${SDK_ROOT}/cmake/3.22.1/bin"
           echo "${SDK_CMAKE}" >> $GITHUB_PATH
           echo "CMAKE_BIN=${SDK_CMAKE}/cmake" >> $GITHUB_ENV
+          echo "ANDROID_SDK_ROOT=${SDK_ROOT}" >> $GITHUB_ENV
+          echo "${SDK_ROOT}/platform-tools" >> $GITHUB_PATH
 
       - name: Install Android NDK (r27 - Android 16 / API 36)
         run: |
