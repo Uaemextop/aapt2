@@ -1,3 +1,16 @@
+diff --git a/libs/androidfw/BigBufferStream.cpp b/libs/androidfw/BigBufferStream.cpp
+index 1234567..abcdefg 100644
+--- a/libs/androidfw/BigBufferStream.cpp
++++ b/libs/androidfw/BigBufferStream.cpp
+@@ -17,6 +17,8 @@
+ #include "androidfw/BigBufferStream.h"
+ 
+ #include <algorithm>
++#include <cstring>
++#include <limits>
+ 
+ namespace android {
+ 
 diff --git a/libs/androidfw/ApkParsing.cpp b/libs/androidfw/ApkParsing.cpp
 index 1234567..abcdefg 100644
 --- a/libs/androidfw/ApkParsing.cpp
