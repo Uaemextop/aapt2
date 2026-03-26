@@ -1,3 +1,32 @@
+diff --git a/libcutils/include/cutils/atomic.h b/libcutils/include/cutils/atomic.h
+index 68e00be..8d3a782 100644
+--- a/libcutils/include/cutils/atomic.h
++++ b/libcutils/include/cutils/atomic.h
+@@ -19,7 +19,24 @@
+ 
+ #include <stdint.h>
+ #include <sys/types.h>
++#ifdef __cplusplus
++#include <atomic>
++using std::atomic_int_least32_t;
++using std::atomic_fetch_add_explicit;
++using std::atomic_fetch_sub_explicit;
++using std::atomic_fetch_and_explicit;
++using std::atomic_fetch_or_explicit;
++using std::atomic_load_explicit;
++using std::atomic_store_explicit;
++using std::atomic_compare_exchange_strong_explicit;
++using std::atomic_thread_fence;
++using std::memory_order_release;
++using std::memory_order_acquire;
++using std::memory_order_relaxed;
++using std::memory_order_seq_cst;
++#else
+ #include <stdatomic.h>
++#endif
+ 
+ /*
+  * A handful of basic atomic operations.
 diff --git a/libcutils/include/cutils/trace.h b/libcutils/include/cutils/trace.h
 index 7f57637..4bc2f01 100644
 --- a/libcutils/include/cutils/trace.h
@@ -14,7 +43,7 @@ index 7f57637..4bc2f01 100644
  #include <stdint.h>
  #include <stdio.h>
 diff --git a/libpackagelistparser/packagelistparser.cpp b/libpackagelistparser/packagelistparser.cpp
-index 5517b68..39785ab 100644
+index 5517b68..0a0a950 100644
 --- a/libpackagelistparser/packagelistparser.cpp
 +++ b/libpackagelistparser/packagelistparser.cpp
 @@ -23,7 +23,11 @@

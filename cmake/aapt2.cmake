@@ -164,7 +164,6 @@ add_library(libaapt2 STATIC
   libselinux
   libsepol
   libutils 
-  libpackagelistparser
   libcutils
   libziparchive
   libbase
@@ -182,5 +181,5 @@ add_library(libaapt2 STATIC
 if(WIN32)
   target_link_libraries(aapt2 ws2_32 shlwapi)
 else()
-  target_link_libraries(aapt2 dl pthread)
+  target_link_libraries(aapt2 libpackagelistparser dl pthread)
 endif()
