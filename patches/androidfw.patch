@@ -23,6 +23,22 @@ index f12966341..6cc1a86d4 100644
  #include <binder/TextOutput.h>
  
  #endif
+diff --git a/libs/androidfw/include/androidfw/CombinedIterator.h b/libs/androidfw/include/androidfw/CombinedIterator.h
+index 1234567..abcdefg 100644
+--- a/libs/androidfw/include/androidfw/CombinedIterator.h
++++ b/libs/androidfw/include/androidfw/CombinedIterator.h
+@@ -62,6 +62,11 @@ struct RefPair : BaseRefPair<It1, It2> {
+     swap(l.first, r.first);
+     swap(l.second, r.second);
+   }
++  friend void swap(RefPair&& l, RefPair&& r) {
++    using std::swap;
++    swap(l.first, r.first);
++    swap(l.second, r.second);
++  }
+ };
+ 
+ template <class It1, class It2>
 diff --git a/libs/androidfw/include/androidfw/ResourceTypes.h b/libs/androidfw/include/androidfw/ResourceTypes.h
 index cb47034ee..e5cfea1d7 100644
 --- a/libs/androidfw/include/androidfw/ResourceTypes.h
