@@ -63,7 +63,7 @@ fi
 
 # Build protobuf compiler (protoc) from the submodule using CMake.
 mkdir -p "src/protobuf/build-protoc" && cd "src/protobuf/build-protoc" || exit 1
-cmake -DCMAKE_BUILD_TYPE=Release \
+${CMAKE_BIN:-cmake} -DCMAKE_BUILD_TYPE=Release \
   -Dprotobuf_BUILD_TESTS=OFF \
   -Dprotobuf_BUILD_EXAMPLES=OFF \
   .. || exit 1
@@ -92,7 +92,7 @@ else
 fi
 
 # Run cmake for the target architecture.
-cmake -GNinja \
+${CMAKE_BIN:-cmake} -GNinja \
 -DCMAKE_C_COMPILER=gcc \
 -DCMAKE_CXX_COMPILER=g++ \
 -DCMAKE_C_FLAGS="$arch_c_flags" \

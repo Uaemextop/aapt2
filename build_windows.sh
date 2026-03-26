@@ -70,7 +70,7 @@ fi
 
 # Build protobuf compiler (protoc, host version for code generation).
 mkdir -p "src/protobuf/build-protoc" && cd "src/protobuf/build-protoc" || exit 1
-cmake -DCMAKE_BUILD_TYPE=Release \
+${CMAKE_BIN:-cmake} -DCMAKE_BUILD_TYPE=Release \
   -Dprotobuf_BUILD_TESTS=OFF \
   -Dprotobuf_BUILD_EXAMPLES=OFF \
   .. || exit 1
@@ -88,7 +88,7 @@ aapt_binary_path="$root/$build_directory/cmake/aapt2.exe"
 mkdir -p "$build_directory" && cd "$build_directory" || exit 1
 
 # Run cmake for the target architecture.
-cmake -GNinja \
+${CMAKE_BIN:-cmake} -GNinja \
 -DCMAKE_C_COMPILER="${cross_prefix}-gcc" \
 -DCMAKE_CXX_COMPILER="${cross_prefix}-g++" \
 -DCMAKE_SYSTEM_NAME=Windows \
