@@ -1,4 +1,4 @@
-add_library(libutils STATIC
+set(LIBUTILS_SRCS
     ${SRC}/core/libutils/binder/Errors.cpp
     ${SRC}/core/libutils/FileMap.cpp
     ${SRC}/core/libutils/JenkinsHash.cpp
@@ -19,8 +19,14 @@ add_library(libutils STATIC
     ${SRC}/core/libutils/binder/VectorImpl.cpp
     ${SRC}/core/libutils/misc.cpp
     ${SRC}/core/libutils/Trace.cpp
-    ${SRC}/core/libutils/Looper.cpp
     )
+
+# Looper.cpp uses Linux-specific sys/epoll.h and is not available on Windows.
+if(NOT WIN32)
+    list(APPEND LIBUTILS_SRCS ${SRC}/core/libutils/Looper.cpp)
+endif()
+
+add_library(libutils STATIC ${LIBUTILS_SRCS})
 
 target_include_directories(libutils PRIVATE
     ${SRC}/core/include
