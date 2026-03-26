@@ -24,32 +24,32 @@ root="$(pwd)"
 # Apply essential patches (skip Android-specific: boringssl.patch, libpng.patch).
 # Patches are applied within each submodule directory.
 cd "src/base" || exit 1
-git apply "$root/patches/aapt2.patch" --whitespace=fix
-git apply "$root/patches/androidfw.patch" --whitespace=fix
+git apply "$root/patches/aapt2.patch" --whitespace=fix || exit 1
+git apply "$root/patches/androidfw.patch" --whitespace=fix || exit 1
 cd "$root" || exit 1
 
 cd "src/incremental_delivery" || exit 1
-git apply "$root/patches/incremental_delivery.patch" --whitespace=fix
+git apply "$root/patches/incremental_delivery.patch" --whitespace=fix || exit 1
 cd "$root" || exit 1
 
 cd "src/protobuf" || exit 1
-git apply "$root/patches/protobuf.patch" --whitespace=fix
+git apply "$root/patches/protobuf.patch" --whitespace=fix || exit 1
 cd "$root" || exit 1
 
 cd "src/selinux" || exit 1
-git apply "$root/patches/selinux.patch" --whitespace=fix
+git apply "$root/patches/selinux.patch" --whitespace=fix || exit 1
 cd "$root" || exit 1
 
 cd "src/core" || exit 1
-git apply "$root/patches/core.patch" --whitespace=fix
+git apply "$root/patches/core.patch" --whitespace=fix || exit 1
 cd "$root" || exit 1
 
 cd "src/expat" || exit 1
-git apply "$root/patches/expat.patch" --whitespace=fix
+git apply "$root/patches/expat.patch" --whitespace=fix || exit 1
 cd "$root" || exit 1
 
 cd "src/zopfli" || exit 1
-git apply "$root/patches/zopfli.patch" --whitespace=fix
+git apply "$root/patches/zopfli.patch" --whitespace=fix || exit 1
 cd "$root" || exit 1
 
 # Clone abseil-cpp into the location expected by protobuf's cmake build.
