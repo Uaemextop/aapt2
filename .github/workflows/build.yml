@@ -34,6 +34,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          sudo dpkg --add-architecture i386
           sudo apt-get update -y
           sudo apt-get install -y \
             ninja-build \
@@ -43,10 +44,50 @@ jobs:
             build-essential \
             cmake \
             nasm \
-            zlib1g-dev
+            zlib1g-dev \
+            pkg-config \
+            git \
+            curl \
+            wget \
+            unzip \
+            zip \
+            python3 \
+            python3-pip \
+            flex \
+            bison \
+            libgtest-dev \
+            libgoogle-glog-dev \
+            libprotobuf-dev \
+            protobuf-compiler \
+            libssl-dev \
+            libexpat1-dev \
+            libpng-dev \
+            libpcre2-dev \
+            liblzma-dev \
+            libbz2-dev \
+            libfmt-dev \
+            libsqlite3-dev \
+            libxml2-dev \
+            libxml2-utils \
+            openjdk-17-jdk-headless
           if [[ "${{ matrix.target_arch }}" == "x86" ]]; then
-            sudo apt-get install -y gcc-multilib g++-multilib
+            sudo apt-get install -y \
+              gcc-multilib \
+              g++-multilib \
+              lib32z1-dev \
+              lib32stdc++6
           fi
+
+      - name: Install Android NDK (r27 – Android 16 / API 36)
+        run: |
+          export ANDROID_NDK_VERSION=r27c
+          wget -q "https://dl.google.com/android/repository/android-ndk-${ANDROID_NDK_VERSION}-linux.zip" -O /tmp/ndk.zip
+          sudo mkdir -p /opt/android-sdk/ndk
+          sudo unzip -q /tmp/ndk.zip -d /opt/android-sdk/ndk
+          rm /tmp/ndk.zip
+          echo "ANDROID_NDK_HOME=/opt/android-sdk/ndk/android-ndk-${ANDROID_NDK_VERSION}" >> $GITHUB_ENV
+          echo "ANDROID_NDK=/opt/android-sdk/ndk/android-ndk-${ANDROID_NDK_VERSION}" >> $GITHUB_ENV
+          echo "/opt/android-sdk/ndk/android-ndk-${ANDROID_NDK_VERSION}" >> $GITHUB_PATH
 
       - name: Build aapt2 for Linux
         run: ./build.sh ${{ matrix.target_arch }}
@@ -84,6 +125,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          sudo dpkg --add-architecture i386
           sudo apt-get update -y
           sudo apt-get install -y \
             ninja-build \
@@ -94,12 +136,50 @@ jobs:
             cmake \
             nasm \
             zlib1g-dev \
-            libz-mingw-w64-dev
+            libz-mingw-w64-dev \
+            pkg-config \
+            git \
+            curl \
+            wget \
+            unzip \
+            zip \
+            python3 \
+            python3-pip \
+            flex \
+            bison \
+            libgtest-dev \
+            libgoogle-glog-dev \
+            libprotobuf-dev \
+            protobuf-compiler \
+            libssl-dev \
+            libexpat1-dev \
+            libpng-dev \
+            libpcre2-dev \
+            liblzma-dev \
+            libbz2-dev \
+            libfmt-dev \
+            libsqlite3-dev \
+            libxml2-dev \
+            libxml2-utils \
+            openjdk-17-jdk-headless \
+            mingw-w64-common \
+            mingw-w64-tools
           if [[ "${{ matrix.target_arch }}" == "x86_64" ]]; then
             sudo apt-get install -y gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64
           else
             sudo apt-get install -y gcc-mingw-w64-i686 g++-mingw-w64-i686
           fi
+
+      - name: Install Android NDK (r27 – Android 16 / API 36)
+        run: |
+          export ANDROID_NDK_VERSION=r27c
+          wget -q "https://dl.google.com/android/repository/android-ndk-${ANDROID_NDK_VERSION}-linux.zip" -O /tmp/ndk.zip
+          sudo mkdir -p /opt/android-sdk/ndk
+          sudo unzip -q /tmp/ndk.zip -d /opt/android-sdk/ndk
+          rm /tmp/ndk.zip
+          echo "ANDROID_NDK_HOME=/opt/android-sdk/ndk/android-ndk-${ANDROID_NDK_VERSION}" >> $GITHUB_ENV
+          echo "ANDROID_NDK=/opt/android-sdk/ndk/android-ndk-${ANDROID_NDK_VERSION}" >> $GITHUB_ENV
+          echo "/opt/android-sdk/ndk/android-ndk-${ANDROID_NDK_VERSION}" >> $GITHUB_PATH
 
       - name: Build aapt2 for Windows
         run: ./build_windows.sh ${{ matrix.target_arch }}

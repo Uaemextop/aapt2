@@ -1,3 +1,18 @@
+diff --git a/libs/androidfw/LoadedArsc.cpp b/libs/androidfw/LoadedArsc.cpp
+index 1234567..abcdefg 100644
+--- a/libs/androidfw/LoadedArsc.cpp
++++ b/libs/androidfw/LoadedArsc.cpp
+@@ -22,7 +22,9 @@
+ #include <cstddef>
+ #include <limits>
+ #include <optional>
+-#include <android_content_res.h>
++// Stub for host builds: android_content_res.h is an aconfig-generated header
++// only available in the Android platform build system.
++static inline bool android_content_res_resource_readwrite_flags() { return false; }
+ 
+ #include "android-base/logging.h"
+ #include "android-base/stringprintf.h"
 diff --git a/libs/androidfw/BigBufferStream.cpp b/libs/androidfw/BigBufferStream.cpp
 index 1234567..abcdefg 100644
 --- a/libs/androidfw/BigBufferStream.cpp
